@@ -1,9 +1,9 @@
-``Node.Js sKeleton 
+```Node.Js sKeleton ```
 -------------------
+	
+``Folder Structure``
 
-``Folder Structure
-
-``Server
+`Server
 	  app
 	  	--Helper
 	  	--Middleware
@@ -22,7 +22,7 @@
 server.js
 index.js
 package.json
-README.md
+README.md`
 	
 1. .env.example file 
 
