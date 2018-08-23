@@ -5,11 +5,12 @@
 
 `Server
 	  app
-	  	--Helper
+	  	--Utility
 	  	--Middleware
-	  	--Controller
-	  	--Model
 	  	--View
+	  	--api
+             --v1
+             routes.js
 	  config
 	  database
 	  public
@@ -18,6 +19,8 @@
 	  	-- cache
 	  	-- session
 	  	-- testing
+	  globals.js
+	  index.js
 .env.example
 server.js
 index.js
@@ -42,3 +45,15 @@ Server file for include the .env file and index file
 including the global configuration file and starting the server 
 
 
+## Installation
+
+*for newbies : Clone or download zip to your machine then hit this :
+
+`npm install`
+
+## Steps for generating the package for node Js
+
+1. Create the Folder 
+`mkdir foldername`
+2. Clone the repository
+git clone https://github.com/gupta-kamlesh-r/nodejs_skeleton.git
