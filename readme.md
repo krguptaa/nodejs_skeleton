@@ -55,5 +55,7 @@ including the global configuration file and starting the server
 
 1. Create the Folder 
 `mkdir foldername`
+
 2. Clone the repository
+
 git clone https://github.com/gupta-kamlesh-r/nodejs_skeleton.git
