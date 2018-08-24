@@ -4,6 +4,7 @@ const Sequelize = require('sequelize');
 const db = require(`${__dirDatabase}/db-connect`);
 const bcrypt = require('bcrypt');
 const moment = require('moment');
+const Validator = require('validatorjs');
 
 const Model = db.define('users',
   {
@@ -36,17 +37,28 @@ const Model = db.define('users',
 );
 
 
+/**
+ * @param {Object} obj The object to perform validation on
+ * @return {Validator} The validator object with the specified rules.
+ */
+Model.validateForgotPassword = (obj) => {
+	let rules = {
+		email: 'required|email'
+	};
+	return new Validator(obj, rules);
+};
+
 /*
 * Instance Methods
 */
 
 // This method will compare plain text password to hashed password
-Model.prototype.authenticate = function (inputPassword) { 
+Model.prototype.authenticate = function (inputPassword) {
   return bcrypt.compareSync(inputPassword, this.password);
 }
 
 // This method will generate hash password from plain text password
-Model.prototype.generatePasswordHash = function (plainPassword) { 
+Model.prototype.generatePasswordHash = function (plainPassword) {
   const salt = bcrypt.genSaltSync(10);
 
   // Generate hash of plain password string using bcrypt
@@ -55,9 +67,9 @@ Model.prototype.generatePasswordHash = function (plainPassword) {
 
 // This method will convert our instance into object
 // Remove password property from the object
-Model.prototype.toJson = function () { 
+Model.prototype.toJson = function () {
   const obj = Object.assign({}, this.get());
-  
+
   // Remove Password from the object
   delete obj.password;
   return obj;

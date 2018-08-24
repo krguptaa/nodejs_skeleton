@@ -1,10 +1,10 @@
 require('./globals');
 
-const express   		= require('express');
-const app       		= express();
-const appMiddlware		= require(`${__dirMiddleware}AppMiddleware`);
-const route 			= require(`${__dirApi}/routes`);
-const errorHandlerMiddlware	= require(`${__dirMiddleware}ErrorHandlerMiddleware`);
+const express = require('express');
+const app = express();
+const appMiddlware = require(`${__dirMiddleware}AppMiddleware`);
+const route = require(`${__dirApi}/routes`);
+const errorHandlerMiddlware = require(`${__dirMiddleware}ErrorHandlerMiddleware`);
 
 
 // setup the app middlware
