@@ -2,6 +2,7 @@
 const router = require('express').Router();
 
 const authModule = require('./v1/Auth/AuthRoute');
+const userModule = require('./v1/Users/UsersRoute');
 
 // api router will mount other routers
 // for all our resources
@@ -15,5 +16,7 @@ router.get('/', function(req, res) {
 // Group of Auth Route Api
 router.use('/auth', authModule);
 
+// Group of Auth Route Api
+router.use('/users', userModule);
 
 module.exports = router;

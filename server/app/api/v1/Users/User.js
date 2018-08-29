@@ -33,9 +33,12 @@ const Model = db.define('users',
       type: Sequelize.TEXT,
       allowNull: false
     },
+    remember_token: {
+      type: Sequelize.STRING(100),
+      allowNull: true
+    },
   }
 );
-
 
 /**
  * @param {Object} obj The object to perform validation on
@@ -44,6 +47,18 @@ const Model = db.define('users',
 Model.validateForgotPassword = (obj) => {
 	let rules = {
 		email: 'required|email'
+	};
+	return new Validator(obj, rules);
+};
+
+/**
+ * @param {Object} obj The object to perform validation on
+ * @return {Validator} The validator object with the specified rules.
+ */
+Model.validateChangePassword = (obj) => {
+	let rules = {
+		password: 'required',
+    confirmpassword : 'required'
 	};
 	return new Validator(obj, rules);
 };
@@ -65,11 +80,15 @@ Model.prototype.generatePasswordHash = function (plainPassword) {
   return bcrypt.hashSync(plainPassword, salt);
 }
 
+// This method will generate random token for changing a password
+Model.generateRemeberToken = function () {
+  return  Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+}
+
 // This method will convert our instance into object
 // Remove password property from the object
 Model.prototype.toJson = function () {
   const obj = Object.assign({}, this.get());
-
   // Remove Password from the object
   delete obj.password;
   return obj;

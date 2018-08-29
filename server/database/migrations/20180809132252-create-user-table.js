@@ -46,6 +46,11 @@ module.exports = {
         defaultValue: 0,
         type: Sequelize.TINYINT(1)
       },
+      rememberToken: {
+        allowNull: true,
+        field: 'remember_token',
+        type: Sequelize.STRING
+      },
       createdAt: {
         allowNull: false,
         field: 'created_at',
