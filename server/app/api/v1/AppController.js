@@ -5,7 +5,7 @@ import AppError from '../../Utility/app-error';
  * overrides pre defined and existing properties
  */
 class AppController {
-   
+
 }
 
 export default AppController;
